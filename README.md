@@ -1,42 +1,63 @@
-# Scoop Bucket Template
+# scoopApps
 
-<!-- Uncomment the following line after replacing placeholders -->
-<!-- [![Tests](https://github.com/<username>/<bucketname>/actions/workflows/ci.yml/badge.svg)](https://github.com/<username>/<bucketname>/actions/workflows/ci.yml) [![Excavator](https://github.com/<username>/<bucketname>/actions/workflows/excavator.yml/badge.svg)](https://github.com/<username>/<bucketname>/actions/workflows/excavator.yml) -->
+[![Tests](https://github.com/Wzzz-10086/scoopApps/actions/workflows/ci.yml/badge.svg)](https://github.com/Wzzz-10086/scoopApps/actions/workflows/ci.yml)
+[![Excavator](https://github.com/Wzzz-10086/scoopApps/actions/workflows/excavator.yml/badge.svg)](https://github.com/Wzzz-10086/scoopApps/actions/workflows/excavator.yml)
 
-Template bucket for [Scoop](https://scoop.sh), the Windows command-line installer.
+个人维护的 [Scoop](https://scoop.sh) bucket，用于收录未进入官方 bucket、但日常使用需要的 Windows 应用。
 
-## How do I use this template?
+## 添加 Bucket
 
-1. Generate your own copy of this repository with the "Use this template"
-   button.
-2. Allow all GitHub Actions:
-   - Navigate to `Settings` - `Actions` - `General` - `Actions permissions`.
-   - Select `Allow all actions and reusable workflows`.
-   - Then `Save`.
-3. Allow writing to the repository from within GitHub Actions:
-   - Navigate to `Settings` - `Actions` - `General` - `Workflow permissions`.
-   - Select `Read and write permissions`.
-   - Then `Save`.
-4. Document the bucket in `README.md`.
-5. Replace the placeholder repository string in `bin/auto-pr.ps1`.
-6. Create new manifests by copying `bucket/app-name.json.template` to
-   `bucket/<app-name>.json`.
-7. Commit and push changes.
-8. If you'd like your bucket to be indexed on `https://scoop.sh`, add the
-   topic `scoop-bucket` to your repository.
-
-## How do I install these manifests?
-
-After manifests have been committed and pushed, run the following:
-
-```pwsh
-scoop bucket add <bucketname> https://github.com/<username>/<bucketname>
-scoop install <bucketname>/<manifestname>
+```powershell
+scoop bucket add scoopApps https://github.com/Wzzz-10086/scoopApps
 ```
 
-## How do I contribute new manifests?
+确认是否添加成功：
 
-To make a new manifest contribution, please read the [Contributing
-Guide](https://github.com/ScoopInstaller/.github/blob/main/.github/CONTRIBUTING.md)
-and [App Manifests](https://github.com/ScoopInstaller/Scoop/wiki/App-Manifests)
-wiki page.
+```powershell
+scoop bucket list
+```
+
+## 安装应用
+
+当前收录：
+
+| 应用 | 描述 | 安装命令 |
+| --- | --- | --- |
+| Recordly | 制作精致、专业级的屏幕录制视频 | `scoop install scoopApps/recordly` |
+
+## 更新
+
+更新 Scoop 与所有 bucket：
+
+```powershell
+scoop update
+```
+
+更新已安装应用：
+
+```powershell
+scoop update *
+```
+
+## 自动更新
+
+本仓库使用 GitHub Actions 的 `Excavator` 检查 manifest 更新。
+
+- 支持手动触发
+- 定时任务：每天北京时间 `08:20` 运行一次
+
+## 维护说明
+
+新增 manifest 放在 `bucket/<app-name>.json`。
+
+提交前建议至少执行：
+
+```powershell
+jq . bucket/<app-name>.json
+```
+
+如本机 Scoop 测试依赖完整，也可以执行：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\Scoop-Bucket.Tests.ps1
+```
