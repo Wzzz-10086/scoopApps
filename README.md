@@ -23,6 +23,7 @@ scoop bucket list
 
 | 应用 | 描述 | 安装命令 |
 | --- | --- | --- |
+| PixPin | 截图、录屏、OCR - 一款快速灵活的工具 | `scoop install scoopApps/pixpin` |
 | Recordly | 制作精致、专业级的屏幕录制视频 | `scoop install scoopApps/recordly` |
 
 ## 更新
