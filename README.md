@@ -25,6 +25,7 @@ scoop bucket list
 | --- | --- | --- |
 | PixPin | 截图、录屏、OCR - 一款快速灵活的工具 | `scoop install scoopApps/pixpin` |
 | Recordly | 制作精致、专业级的屏幕录制视频 | `scoop install scoopApps/recordly` |
+| CodexPlusPlus | 一个CodexApp的增强工具，努力让Codex变得更好用更舒服 | `scoop install scoopApps/codexplusplus` |
 
 ## 更新
 
