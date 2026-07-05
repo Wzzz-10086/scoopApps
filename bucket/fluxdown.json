@@ -28,18 +28,12 @@
         "LocalAppData"
     ],
     "pre_install": [
-        ". \"$bucketsdir\\$bucket\\bin\\utils.ps1\"",
-        "New-PersistDirectory \"$env:APPDATA\\FluxDown\" \"$persist_dir\\AppData\" -Migrate",
         "# The portable FluxDown saves SQLite database in program directory.",
-        "# To avoid data loss, we turn it into non-portable.",
-        "Remove-Item \"$dir\\portable\" -Force",
-        "New-PersistDirectory \"$env:LOCALAPPDATA\\FluxDown\" \"$persist_dir\\LocalAppData\" -Migrate"
+        "# To avoid data loss, we turn it into non-portable."
     ],
     "pre_uninstall": [
-        ". \"$bucketsdir\\$bucket\\bin\\utils.ps1\"",
-        "Stop-App",
-        "Remove-Junction \"$env:APPDATA\\FluxDown\"",
-        "Remove-Junction \"$env:LOCALAPPDATA\\FluxDown\""
+        ". \"$env:SCOOP\\share\\scoop\\bin\\utils.ps1\"",
+        "Stop-App"
     ],
     "checkver": {
         "url": "https://fluxdown.zerx.dev/api/release",
